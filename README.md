@@ -17,7 +17,7 @@
 <div>
 <img src="https://img-blog.csdnimg.cn/20200417151751717.png" width="70" height="70">
 
-<img src="https://img-blog.csdnimg.cn/20200417151751716.png" width="70" height="70">
+<img src="https://img-blog.csdnimg.cn/20200417151751716.jpeg" width="70" height="70">
 
 <img src="https://img-blog.csdnimg.cn/20200417151751711.png" width="70" height="70">
 
