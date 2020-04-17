@@ -27,5 +27,6 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 
     compile project(':crashx')
+//    implementation 'com.github.aiyangtianci:AndroidCrashX:1.0.0'
 
 }

@@ -26,7 +26,7 @@
                 android:background="@color/gray"
                 android:text="——————java 崩溃"/>
             <Button
-                android:layout_width="wrap_content"
+                android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:text="（主线程）空指针异常"
                 android:layout_marginTop="30dp"
@@ -35,7 +35,7 @@
                 android:onClick="clickNullPointerException" />
 
             <Button
-                android:layout_width="wrap_content"
+                android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:text="（子线程) 数组越界异常"
                 android:layout_marginTop="30dp"
@@ -48,15 +48,46 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/gray"
+                android:padding="10dp"
+                android:layout_marginTop="30dp"
                 android:text="——————native 崩溃"/>
 
+
+            <Button
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:text="Activity未注册"
+                android:layout_marginTop="30dp"
+                android:background="@color/colorPrimary"
+                android:textColor="@color/white"
+                android:onClick="clickStartActivity" />
+
+
+            <Button
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:text="Activity崩溃返回"
+                android:layout_marginTop="30dp"
+                android:background="@color/colorPrimary"
+                android:textColor="@color/white"
+                android:onClick="clickStartActivity" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/gray"
+                android:padding="10dp"
+                android:layout_marginTop="30dp"
                 android:text="——————ANR"/>
 
+            <Button
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:text="（主线程）ANR"
+                android:layout_marginTop="30dp"
+                android:background="@color/colorPrimary"
+                android:textColor="@color/white"
+                android:onClick="clickANR" />
 
         </LinearLayout>
 
