@@ -14,17 +14,17 @@
 
 ## 已经接入
 
-<img src="https://img-blog.csdnimg.cn/20200417151751717.png" width="100" height="100">
+<div>
+<img src="https://img-blog.csdnimg.cn/20200417151751717.png" width="70" height="70">
 
-![Image](https://img-blog.csdnimg.cn/20200417151751717.png) 
+<img src="https://img-blog.csdnimg.cn/20200417151751716.png" width="70" height="70">
 
-![Image](https://img-blog.csdnimg.cn/20200417151751716.jpeg) 
+<img src="https://img-blog.csdnimg.cn/20200417151751711.png" width="70" height="70">
 
-![Image](https://img-blog.csdnimg.cn/20200417151751711.png) 
+<img src="https://img-blog.csdnimg.cn/20200417151751727.png" width="70" height="70">
+</div>
 
-![Image](https://img-blog.csdnimg.cn/20200417151751727.png) 
-
-## 欢迎加入
-<a href="https://img-blog.csdnimg.cn/20191113124915602.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2NzZG5fYWl5YW5n,size_16,color_FFFFFF,t_70">通往Android的阶梯：569614530</a>
+## 欢迎加入QQ群
+<a href="https://img-blog.csdnimg.cn/20191113124915602.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2NzZG5fYWl5YW5n,size_16,color_FFFFFF,t_70">通往Android的阶梯：569614530</a> <br>
 <img src ="https://img-blog.csdn.net/20180308141437608?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvY3Nkbl9haXlhbmc=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" width="210" height="215"><br>
 
