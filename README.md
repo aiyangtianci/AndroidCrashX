@@ -1,5 +1,6 @@
 # 介绍
- <br/>&nbsp;&nbsp; &nbsp;&nbsp;  🔥AndroidCrashX 能够降低APP线上崩溃次数，支持java 异常捕获、native崩溃和ANR处理、线上bug日志追踪。不需要根权限或任何系统权限。
+[![](https://jitpack.io/v/aiyangtianci/AndroidCrashX.svg)](https://jitpack.io/#aiyangtianci/AndroidCrashX)
+<br/>&nbsp;&nbsp; &nbsp;&nbsp;  🔥AndroidCrashX 能够降低APP线上崩溃次数，支持java 异常捕获、native崩溃和ANR处理、线上bug日志追踪。不需要根权限或任何系统权限。
  
 ## 特性
 * 支持 Android 4.0 - 10（API level 14 - 29）。
@@ -8,11 +9,40 @@
 * Activity生命周期中抛出异常，关闭异常页面。
 * 当绘制、测量、布局出现问题导致Crash时，关闭异常界面。
 
-![Image](https://img-blog.csdnimg.cn/20200417151421500.jpg)
+![Image](https://img-blog.csdnimg.cn/20200417151421500.jpg)<br/>
+[原理讲解，请查看我的博客:https://blog.csdn.net/csdn_aiyang/article/details/105054241](https://blog.csdn.net/csdn_aiyang/article/details/105054241"悬停显示")  <br/>
+ 
+## 使用
 
- <br/>[关于此库原理讲解，请查看我的博客:https://blog.csdn.net/csdn_aiyang/article/details/105054241](https://blog.csdn.net/csdn_aiyang/article/details/105054241"悬停显示")  <br/>
+#### 1. 增加依赖。
 
-## 已经接入
+```Gradle
+allprojects {
+		repositories {
+			...
+			maven { url 'https://jitpack.io' }
+		}
+}
+ 
+dependencies {
+   implementation 'com.github.aiyangtianci:AndroidCrashX:1.0.0'
+}
+```
+#### 2. 初始化 Crashx。
+
+> Java
+
+```Java
+public class mApplication extends Application {
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        CrashX.install(this);
+    }
+}
+```
+ 
+## 已接入项目
 
 <div>
 <img src="https://img-blog.csdnimg.cn/20200417151751717.png" width="70" height="70">
