@@ -11,13 +11,19 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-
-
     }
 
     public void clickNullPointerException(View view) {
 
        throw new NullPointerException();
+    }
+
+    public void clickIndexOutOfBoundsException(View view) {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                throw new IndexOutOfBoundsException();
+            }
+        }).start();
     }
 }
