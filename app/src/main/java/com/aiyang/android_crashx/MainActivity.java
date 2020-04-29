@@ -29,6 +29,12 @@ public class MainActivity extends AppCompatActivity {
         }).start();
     }
 
+    //自定义View绘制
+    public void clickRuntiomeException(View view) {
+        MyView myView = (MyView) view;
+        myView.isTouch = true;
+        myView.invalidate();
+    }
 
     //Activity未注册
     public void clickStartActivity(View view) {
@@ -38,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
 
     //Activity生命周期方法抛出异常
     public void clickStartActivity2(View view) {
-        startActivity(new Intent(MainActivity.this, ThreeActivity.class).putExtra("METHOD","onCreate"));
+        startActivity(new Intent(MainActivity.this, ThreeActivity.class).putExtra("METHOD",""));
     }
 
 

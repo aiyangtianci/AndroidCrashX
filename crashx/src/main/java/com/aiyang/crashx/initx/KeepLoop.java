@@ -33,7 +33,6 @@ public final class KeepLoop implements IKeepLoop {
 
             if (Common.FIX_WHILE_OPEN){
                 Common.FIX_WHILE_OPEN = false;
-                ToastUtil.show(mContext,mContext.getString(R.string.crash_tip2));
                 while (true) {
                     try {
                         Looper.loop();
@@ -43,7 +42,7 @@ public final class KeepLoop implements IKeepLoop {
                         }else{
                             ToastUtil.show(mContext,mContext.getString(R.string.crash_over));
                         }
-
+                        e.printStackTrace();
                     }
                 }
             }

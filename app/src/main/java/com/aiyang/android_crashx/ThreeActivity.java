@@ -74,8 +74,4 @@ public class ThreeActivity extends AppCompatActivity {
         super.onNewIntent(intent);
         throw  new RuntimeException();
     }
-
-    public void clickRuntiomeException(View view) {
-        throw new RuntimeException();
-    }
 }

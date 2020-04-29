@@ -68,6 +68,8 @@ public final class RealCrash implements Thread.UncaughtExceptionHandler, ICrash 
             if (Common.FIX_MIAN_HHREAD){
                 if (keepLoop.isChoreographerException(tw)){
                     ToastUtil.show(mContext,mContext.getString(R.string.carsh_canvers));
+                }else{
+                    ToastUtil.show(mContext,mContext.getString(R.string.crash_tip2));
                 }
                 keepLoop.keepLoop(mContext,t);
             }else{
