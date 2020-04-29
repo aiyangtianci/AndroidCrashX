@@ -13,12 +13,13 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
     }
-
+    //（主线程）空指针异常
     public void clickNullPointerException(View view) {
 
        throw new NullPointerException();
     }
 
+    //（子线程) 数组越界异常
     public void clickIndexOutOfBoundsException(View view) {
         new Thread(new Runnable() {
             @Override
@@ -28,12 +29,26 @@ public class MainActivity extends AppCompatActivity {
         }).start();
     }
 
-    public void clickANR(View view) {
 
-    }
-
+    //Activity未注册
     public void clickStartActivity(View view) {
         Intent intent = new Intent(MainActivity.this, SecondActivity.class);
         startActivity(intent);
+    }
+
+    //Activity生命周期方法抛出异常
+    public void clickStartActivity2(View view) {
+        startActivity(new Intent(MainActivity.this, ThreeActivity.class).putExtra("METHOD","onCreate"));
+    }
+
+
+    //ANR
+    public void clickANR(View view) {
+        while (true) {
+            try {
+                Thread.sleep(1000);
+            } catch (Exception ignored) {
+            }
+        }
     }
 }

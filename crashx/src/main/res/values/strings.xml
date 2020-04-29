@@ -3,7 +3,9 @@
 
     <string name="crash_over">异常已被处理</string>
 
-    <string name="carsh_noway">异常未拦截,待重启</string>
+    <string name="carsh_noway">异常未拦截,请重启</string>
+
+    <string name="carsh_canvers">视图绘制出现异常</string>
 
     <string name="crash_tip1">子线程：异常被拦截,待处理</string>
     <string name="crash_tip2">主线程：异常被拦截,待处理</string>

@@ -2,7 +2,7 @@ package com.aiyang.crashx;
 
 import android.content.Context;
 
-import com.aiyang.crashx.init.RealCrash;
+import com.aiyang.crashx.initx.RealCrash;
 import com.aiyang.crashx.inter.ICrash;
 
 public final class CrashX{

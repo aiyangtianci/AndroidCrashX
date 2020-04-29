@@ -10,6 +10,6 @@ public interface ICrash {
      * 错误处理检测
      * @return true:可以处理该异常; 否则返回false
      */
-    boolean handleException(Throwable ex);
+//    boolean handleException(Thread t,Throwable ex);
 
 }
