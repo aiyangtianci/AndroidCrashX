@@ -6,7 +6,7 @@ public interface IKeepLoop {
     /**
      * 主线程或子线程抛出异常后，迫使主线程Looper持续loop()
      */
-    void  keepLoop(Context mContext,Thread t);
+    void  keepLoop(Context mContext);
 
     /**
      * 绘制时抛出异常

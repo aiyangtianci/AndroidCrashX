@@ -7,6 +7,8 @@ import android.view.View;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.aiyang.crashx.util.LogUtils;
+
 public class ThreeActivity extends AppCompatActivity {
     private String LIFE_METHOD;
 
@@ -72,6 +74,7 @@ public class ThreeActivity extends AppCompatActivity {
     @Override
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
-        throw  new RuntimeException();
+        LogUtils.d("onNewIntent");
+        throw new RuntimeException();
     }
 }

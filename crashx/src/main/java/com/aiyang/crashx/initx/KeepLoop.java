@@ -26,11 +26,9 @@ public final class KeepLoop implements IKeepLoop {
     /**
      * 主线程或子线程抛出异常后，迫使主线程Looper持续loop()
      * @param mContext
-     * @param t
      */
     @Override
-    public void keepLoop(final Context mContext,Thread t) {
-
+    public void keepLoop(final Context mContext) {
             if (Common.FIX_WHILE_OPEN){
                 Common.FIX_WHILE_OPEN = false;
                 while (true) {

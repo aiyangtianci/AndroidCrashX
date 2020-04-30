@@ -22,8 +22,14 @@ public final class RealCrash implements Thread.UncaughtExceptionHandler, ICrash 
     public RealCrash(Context mContext) {
         this.mContext = mContext;
         keepLoop = KeepLoop.getInstance();
+        if (Common.FIX_MIAN_HOOKH){
+            ActivityKiller.Init(mContext);
+        }
     }
 
+    /**
+     * Gets the default system exception trap and sets the current crash trap to the default crash trap
+     */
     @Override
     public void setUncaughtCrash() {
         if (!Common.FIX_OPENED){
@@ -31,15 +37,10 @@ public final class RealCrash implements Thread.UncaughtExceptionHandler, ICrash 
         }else{
             return;
         }
-
-        //获取默认的系统异常捕获器
         if (mDefaultCaughtExceptionHandler == null){
             mDefaultCaughtExceptionHandler = Thread.getDefaultUncaughtExceptionHandler();
         }
-
-        //把当前的crash捕获器设置成默认的crash捕获器
         Thread.setDefaultUncaughtExceptionHandler(this);
-
     }
 
     /**
@@ -49,7 +50,7 @@ public final class RealCrash implements Thread.UncaughtExceptionHandler, ICrash 
      */
     @Override
     public void uncaughtException(Thread thread, Throwable throwable) {
-        LogUtils.d("出现异常："+thread.toString());
+        LogUtils.d("UnCaughtException："+thread.toString());
         if (!handleException(thread,throwable)) {
             canNotCatchCrash(thread, throwable);
         }
@@ -58,7 +59,12 @@ public final class RealCrash implements Thread.UncaughtExceptionHandler, ICrash 
 
     /**
      * handle Thread Exception
-     * @return true:拦截了该异常; 否则返回false
+     * {
+     * 1: The default intercepts child threads;
+     * 2: You can set whether to intercept the main thread exception and keep the application running;
+     * 3: Drawing an exception suggests closing the page
+     * }
+     * @return true;false
      */
     private boolean handleException(Thread t,Throwable tw) {
         if (tw ==null) {
@@ -71,7 +77,7 @@ public final class RealCrash implements Thread.UncaughtExceptionHandler, ICrash 
                 }else{
                     ToastUtil.show(mContext,mContext.getString(R.string.crash_tip2));
                 }
-                keepLoop.keepLoop(mContext,t);
+                keepLoop.keepLoop(mContext);
             }else{
                 canNotCatchCrash(t,tw);
             }
@@ -90,7 +96,7 @@ public final class RealCrash implements Thread.UncaughtExceptionHandler, ICrash 
     }
 
     /**
-     * Uncaught Exception
+     * Uncaught Exception：To the system default process
      * @param thread
      * @param throwable
      */

@@ -18,7 +18,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".ThreeActivity"  android:launchMode="singleTask"/>
+        <activity android:name=".ThreeActivity"  android:launchMode="singleInstance"/>
     </application>
 
 </manifest>
