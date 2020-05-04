@@ -3,7 +3,8 @@
     xmlns:android="http://schemas.android.com/apk/res/android" >
     <item
         android:id="@+id/action_log"
-        android:title="Log日志    "
+        android:title="Crash记录    "
+        android:textAllCaps="false"
         android:orderInCategory="100"
         app:showAsAction="always" />
 </menu>
