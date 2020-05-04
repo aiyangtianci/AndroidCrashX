@@ -25,8 +25,11 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.2.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+    implementation 'com.android.support:recyclerview-v7:26+'
 
-    compile project(':crashx')
+
+    //添加 crashx依赖
+    implementation project(':crashx')
 //    implementation 'com.github.aiyangtianci:AndroidCrashX:1.0.0'
 
 }

@@ -6,6 +6,7 @@ import android.os.Looper;
 import com.aiyang.crashx.R;
 import com.aiyang.crashx.inter.IKeepLoop;
 import com.aiyang.crashx.util.Common;
+import com.aiyang.crashx.util.LogFile;
 import com.aiyang.crashx.util.LogUtils;
 import com.aiyang.crashx.util.Utils;
 
@@ -36,6 +37,9 @@ public final class KeepLoop implements IKeepLoop {
                     try {
                         Looper.loop();
                     } catch (Throwable e) {
+                        //日志文件
+                        LogFile.saveCrashLog(mContext,e);
+                        //提示打印
                         if(isChoreographerException(e)){
                             canNotCatchCrash(mContext,thread,e);
                         }else{

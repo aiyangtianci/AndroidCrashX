@@ -20,6 +20,7 @@
 
         <activity android:name=".ThreeActivity"  android:launchMode="singleInstance"/>
         <activity android:name=".FourActivity"/>
+        <activity android:name=".CrashLogActivity"/>
     </application>
 
 </manifest>

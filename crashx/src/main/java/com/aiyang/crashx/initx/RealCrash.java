@@ -6,6 +6,7 @@ import android.os.Looper;
 import com.aiyang.crashx.R;
 import com.aiyang.crashx.inter.ICrash;
 import com.aiyang.crashx.util.Common;
+import com.aiyang.crashx.util.LogFile;
 import com.aiyang.crashx.util.LogUtils;
 import com.aiyang.crashx.util.Utils;
 
@@ -76,8 +77,11 @@ public final class RealCrash implements Thread.UncaughtExceptionHandler, ICrash 
                 if (keepLoop.isChoreographerException(tw)){
                     canNotCatchCrash(t, tw);
                 }else{
+                    //提示
                     LogUtils.d(mContext.getString(R.string.crash_tip2));
                     Utils.show(mContext,mContext.getString(R.string.crash_tip2));
+                    //日志
+                    LogFile.saveCrashLog(mContext, tw);
                 }
                 keepLoop.keepLoop(t,mContext);
             }else{

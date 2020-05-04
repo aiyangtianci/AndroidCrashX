@@ -11,6 +11,7 @@ import com.aiyang.crashx.initx.activitykillercompat.ActivityKillerV24_V25;
 import com.aiyang.crashx.initx.activitykillercompat.ActivityKillerV26;
 import com.aiyang.crashx.initx.activitykillercompat.ActivityKillerV28;
 import com.aiyang.crashx.inter.IActivityKiller;
+import com.aiyang.crashx.util.LogFile;
 
 import java.lang.reflect.Field;
 
@@ -48,7 +49,7 @@ public class ActivityKiller {
     /**
      * Replace ActivityThread. MH. MCallback, realizes the intercept the Activity lifecycle
      */
-    private static void mHookmH(Context mC) throws Exception{
+    private static void mHookmH(final Context mContext) throws Exception{
         if (mKill == null){
            throw new NullPointerException("mKill is null");
         }
@@ -77,6 +78,8 @@ public class ActivityKiller {
                         try {
                             mhHandler.handleMessage(msg);
                         } catch (Throwable throwable) {
+                            //日志文件
+                            LogFile.saveCrashLog(mContext,throwable);
                             mKill.finishLaunchActivity(msg);
                         }
                         return true;
@@ -88,6 +91,8 @@ public class ActivityKiller {
                         try {
                             mhHandler.handleMessage(msg);
                         } catch (Throwable throwable) {
+                            //日志文件
+                            LogFile.saveCrashLog(mContext,throwable);
                             mKill.finishLaunchActivity(msg);
                         }
                         return true;
@@ -95,6 +100,8 @@ public class ActivityKiller {
                         try {
                             mhHandler.handleMessage(msg);
                         } catch (Throwable throwable) {
+                            //日志文件
+                            LogFile.saveCrashLog(mContext,throwable);
                             mKill.finishResumeActivity(msg);
                         }
                         return true;
@@ -102,6 +109,8 @@ public class ActivityKiller {
                         try {
                             mhHandler.handleMessage(msg);
                         } catch (Throwable throwable) {
+                            //日志文件
+                            LogFile.saveCrashLog(mContext,throwable);
                             mKill.finishPauseActivity(msg);
                         }
                         return true;
@@ -109,6 +118,8 @@ public class ActivityKiller {
                         try {
                             mhHandler.handleMessage(msg);
                         } catch (Throwable throwable) {
+                            //日志文件
+                            LogFile.saveCrashLog(mContext,throwable);
                             mKill.finishPauseActivity(msg);
                         }
                         return true;
@@ -116,6 +127,8 @@ public class ActivityKiller {
                         try {
                             mhHandler.handleMessage(msg);
                         } catch (Throwable throwable) {
+                            //日志文件
+                            LogFile.saveCrashLog(mContext,throwable);
                             mKill.finishStopActivity(msg);
                         }
                         return true;
@@ -123,6 +136,8 @@ public class ActivityKiller {
                         try {
                             mhHandler.handleMessage(msg);
                         } catch (Throwable throwable) {
+                            //日志文件
+                            LogFile.saveCrashLog(mContext,throwable);
                             throwable.printStackTrace();
                         }
                         return true;
