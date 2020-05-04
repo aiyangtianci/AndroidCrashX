@@ -42,9 +42,9 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    //Activity生命周期方法抛出异常
+    //Activity生命周期方法异常
     public void clickStartActivity2(View view) {
-        startActivity(new Intent(MainActivity.this, ThreeActivity.class).putExtra("METHOD",""));
+        startActivity(new Intent(MainActivity.this, ThreeActivity.class).putExtra("METHOD","onStart"));
     }
 
 

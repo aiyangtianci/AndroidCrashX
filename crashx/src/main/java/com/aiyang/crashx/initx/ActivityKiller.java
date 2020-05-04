@@ -76,7 +76,6 @@ public class ActivityKiller {
                             mhHandler.handleMessage(msg);
                         } catch (Throwable throwable) {
                             mKill.finishLaunchActivity(msg);
-                            KeepLoop.getInstance().keepLoop();
                         }
                         return true;
                     }
@@ -122,6 +121,7 @@ public class ActivityKiller {
                         try {
                             mhHandler.handleMessage(msg);
                         } catch (Throwable throwable) {
+                            throwable.printStackTrace();
                         }
                         return true;
                 }

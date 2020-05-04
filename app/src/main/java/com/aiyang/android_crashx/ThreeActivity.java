@@ -77,4 +77,9 @@ public class ThreeActivity extends AppCompatActivity {
         LogUtils.d("onNewIntent");
         throw new RuntimeException();
     }
+
+    public void lifeException(View view) {
+        LIFE_METHOD  = "onPause";
+        onPause();
+    }
 }
