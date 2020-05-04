@@ -67,7 +67,7 @@
             <Button
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
-                android:text="Activity未注册"
+                android:text="Activity 未注册"
                 android:layout_marginTop="30dp"
                 android:background="@color/colorPrimary"
                 android:textColor="@color/white"

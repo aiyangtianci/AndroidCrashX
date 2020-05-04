@@ -25,7 +25,7 @@ public class ActivityKiller {
     public static void Init(Context mContext) {
         IActivityKiller mInstance = null;
         if (Build.VERSION.SDK_INT >= 28) { // android 9.0
-            mInstance = new ActivityKillerV28();
+            mInstance = new ActivityKillerV28(mContext);
         } else if (Build.VERSION.SDK_INT >= 26) {//android 8.0
             mInstance = new ActivityKillerV26();
         } else if (Build.VERSION.SDK_INT == 25 || Build.VERSION.SDK_INT == 24) { //android 7.0 -7.1.1

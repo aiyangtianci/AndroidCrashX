@@ -2,6 +2,8 @@ package com.aiyang.crashx.initx.activitykillercompat;
 
 import android.app.Activity;
 import android.app.ActivityManager;
+import android.app.servertransaction.ClientTransaction;
+import android.content.Context;
 import android.content.Intent;
 import android.os.IBinder;
 import android.os.Message;
@@ -11,19 +13,29 @@ import com.aiyang.crashx.inter.IActivityKiller;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 
+import me.weishu.reflection.Reflection;
+
 
 public class ActivityKillerV28 implements IActivityKiller {
 
+    public ActivityKillerV28(Context ctx) {
+        try {
+            //解除 android P 反射限制
+            Reflection.unseal(ctx);
+        } catch (Throwable throwable) {
+            throwable.printStackTrace();
+        }
+    }
 
     @Override
     public void finishLaunchActivity(Message message) {
 
-//        try {
-//            tryFinish1(message);
-//            return;
-//        } catch (Throwable throwable) {
-//            throwable.printStackTrace();
-//        }
+        try {
+            tryFinish1(message);
+            return;
+        } catch (Throwable throwable) {
+            throwable.printStackTrace();
+        }
 
         try {
             tryFinish2(message);
@@ -41,11 +53,11 @@ public class ActivityKillerV28 implements IActivityKiller {
 
     }
 
-//    private void tryFinish1(Message message) throws Throwable {
-//        ClientTransaction clientTransaction = (ClientTransaction) message.obj;
-//        IBinder binder = clientTransaction.getActivityToken();
-//        finish(binder);
-//    }
+    private void tryFinish1(Message message) throws Throwable {
+        ClientTransaction clientTransaction = (ClientTransaction) message.obj;
+        IBinder binder = clientTransaction.getActivityToken();
+        finish(binder);
+    }
 
     private void tryFinish3(Message message) throws Throwable {
         Object clientTransaction = message.obj;
