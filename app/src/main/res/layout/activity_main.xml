@@ -19,6 +19,13 @@
             android:paddingBottom="30dp"
             android:orientation="vertical">
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:background="@color/white"
+                android:text="——————Blog：https://blog.csdn.net/csdn_aiyang \n\n——————G i t：https://github.com/aiyangtianci"/>
+
 
             <TextView
                 android:layout_width="match_parent"
