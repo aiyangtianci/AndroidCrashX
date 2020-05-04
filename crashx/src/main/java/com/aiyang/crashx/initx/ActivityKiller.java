@@ -19,6 +19,7 @@ import java.lang.reflect.Field;
  * Now FinishActivity ends an Activity whose lifecycle throws an exception.
  */
 public class ActivityKiller {
+   public static volatile IActivityKiller mKill = null;
     /**
      * Different versions of android get ActivityManager, finishActivity parameter, token(binder object) is different
      */
@@ -35,8 +36,9 @@ public class ActivityKiller {
         } else if (Build.VERSION.SDK_INT <= 20){//android 4.4
             mInstance = new ActivityKillerV15_V20();
         }
+        mKill = mInstance;
         try {
-            mHookmH(mInstance,mContext);
+            mHookmH(mContext);
         } catch (Throwable e) {
             e.printStackTrace();
         }
@@ -46,7 +48,7 @@ public class ActivityKiller {
     /**
      * Replace ActivityThread. MH. MCallback, realizes the intercept the Activity lifecycle
      */
-    private static void mHookmH(final IActivityKiller mKill,Context mC) throws Exception{
+    private static void mHookmH(Context mC) throws Exception{
         if (mKill == null){
            throw new NullPointerException("mKill is null");
         }

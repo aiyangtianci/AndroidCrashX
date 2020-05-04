@@ -5,8 +5,9 @@ import android.os.Looper;
 
 import com.aiyang.crashx.R;
 import com.aiyang.crashx.inter.ICrash;
+import com.aiyang.crashx.util.Common;
 import com.aiyang.crashx.util.LogUtils;
-import com.aiyang.crashx.util.ToastUtil;
+import com.aiyang.crashx.util.Utils;
 
 /**
  * @author aiyang
@@ -73,21 +74,22 @@ public final class RealCrash implements Thread.UncaughtExceptionHandler, ICrash 
         if (t == Looper.getMainLooper().getThread()){
             if (Common.FIX_MIAN_HHREAD){
                 if (keepLoop.isChoreographerException(tw)){
-                    ToastUtil.show(mContext,mContext.getString(R.string.carsh_canvers));
+                    canNotCatchCrash(t, tw);
                 }else{
-                    ToastUtil.show(mContext,mContext.getString(R.string.crash_tip2));
+                    LogUtils.d(mContext.getString(R.string.crash_tip2));
+                    Utils.show(mContext,mContext.getString(R.string.crash_tip2));
                 }
-                keepLoop.keepLoop(mContext);
+                keepLoop.keepLoop(t,mContext);
             }else{
                 canNotCatchCrash(t,tw);
             }
         }else{
-            LogUtils.d(mContext.getString(R.string.crash_tip1));
             new Thread() {
                 @Override
                 public void run() {
                     Looper.prepare();
-                    ToastUtil.show(mContext,mContext.getString(R.string.crash_tip1));
+                    LogUtils.d(mContext.getString(R.string.crash_tip1));
+                    Utils.show(mContext,mContext.getString(R.string.crash_tip1));
                     Looper.loop();
                 }
             }.start();
@@ -101,10 +103,12 @@ public final class RealCrash implements Thread.UncaughtExceptionHandler, ICrash 
      * @param throwable
      */
     private void canNotCatchCrash(Thread thread, Throwable throwable){
-        if (mDefaultCaughtExceptionHandler != null){
-            mDefaultCaughtExceptionHandler.uncaughtException(thread, throwable);
-            ToastUtil.show(mContext,mContext.getString(R.string.carsh_noway));
+        LogUtils.d(mContext.getString(R.string.carsh_canvers));
+        Utils.restarteApp(mContext);
+        if (mDefaultCaughtExceptionHandler == null){
+            mDefaultCaughtExceptionHandler = Thread.getDefaultUncaughtExceptionHandler();
         }
+        mDefaultCaughtExceptionHandler.uncaughtException(thread, throwable);
     }
 
 }

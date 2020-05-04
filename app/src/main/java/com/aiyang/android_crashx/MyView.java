@@ -7,12 +7,10 @@ import android.util.AttributeSet;
 import android.widget.Button;
 
 import androidx.annotation.Nullable;
-
-import com.aiyang.crashx.util.LogUtils;
+import com.aiyang.crashx.util.Common;
 
 @SuppressLint("AppCompatCustomView")
 public class MyView extends Button {
-    public boolean isTouch = false;
 
     public MyView(Context context) {
         super(context);
@@ -27,7 +25,7 @@ public class MyView extends Button {
         super.onDraw(canvas);
 
         //抛出异常
-        if (isTouch){
+        if (Common.VIEW_TOUCH_RUNTIOME){
             throw new RuntimeException();
         }
     }

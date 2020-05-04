@@ -5,8 +5,9 @@ import android.os.Looper;
 
 import com.aiyang.crashx.R;
 import com.aiyang.crashx.inter.IKeepLoop;
+import com.aiyang.crashx.util.Common;
 import com.aiyang.crashx.util.LogUtils;
-import com.aiyang.crashx.util.ToastUtil;
+import com.aiyang.crashx.util.Utils;
 
 /**
  * 迫使Loop持续循环
@@ -28,7 +29,7 @@ public final class KeepLoop implements IKeepLoop {
      * @param mContext
      */
     @Override
-    public void keepLoop(final Context mContext) {
+    public void keepLoop(Thread thread,final Context mContext) {
             if (Common.FIX_WHILE_OPEN){
                 Common.FIX_WHILE_OPEN = false;
                 while (true) {
@@ -36,9 +37,10 @@ public final class KeepLoop implements IKeepLoop {
                         Looper.loop();
                     } catch (Throwable e) {
                         if(isChoreographerException(e)){
-                            ToastUtil.show(mContext,mContext.getString(R.string.carsh_canvers));
+                            canNotCatchCrash(mContext,thread,e);
                         }else{
-                            ToastUtil.show(mContext,mContext.getString(R.string.crash_over));
+                            LogUtils.d(mContext.getString(R.string.crash_over));
+                            Utils.show(mContext,mContext.getString(R.string.crash_over));
                         }
                         e.printStackTrace();
                     }
@@ -75,4 +77,17 @@ public final class KeepLoop implements IKeepLoop {
         }
         return false;
     }
+
+    /**
+     * Uncaught Exception：To the system default process
+     * @param thread
+     * @param throwable
+     */
+    private void canNotCatchCrash(Context mContext,Thread thread, Throwable throwable){
+        LogUtils.d(mContext.getString(R.string.carsh_canvers));
+        Utils.restarteApp(mContext);
+        Thread.UncaughtExceptionHandler  mDefaultCaughtExceptionHandler = Thread.getDefaultUncaughtExceptionHandler();
+        mDefaultCaughtExceptionHandler.uncaughtException(thread, throwable);
+    }
+
 }

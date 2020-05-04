@@ -13,9 +13,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
     }
+
+    /*
+    =========================== JAVA  ===========================
+    */
     //（主线程）空指针异常
     public void clickNullPointerException(View view) {
-
        throw new NullPointerException();
     }
 
@@ -29,25 +32,27 @@ public class MainActivity extends AppCompatActivity {
         }).start();
     }
 
-    //自定义View绘制
-    public void clickRuntiomeException(View view) {
-        MyView myView = (MyView) view;
-        myView.isTouch = true;
-        myView.invalidate();
-    }
+    /*
+    =========================== Activity  ===========================
+     */
 
     //Activity未注册
     public void clickStartActivity(View view) {
-        Intent intent = new Intent(MainActivity.this, SecondActivity.class);
-        startActivity(intent);
+        startActivity(new Intent(MainActivity.this, SecondActivity.class));
     }
 
+    //自定义View绘制
+    public void clickRuntiomeException(View view) {
+        startActivity(new Intent(MainActivity.this, FourActivity.class));
+    }
     //Activity生命周期方法异常
     public void clickStartActivity2(View view) {
         startActivity(new Intent(MainActivity.this, ThreeActivity.class).putExtra("METHOD","onStart"));
     }
 
-
+    /*
+    =========================== ANR  ===========================
+     */
     //ANR
     public void clickANR(View view) {
         while (true) {

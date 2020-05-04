@@ -14,7 +14,7 @@ public class LogUtils {
     /**
      * isDebug :是用来控制，是否打印日志
      */
-    public static boolean isDeBug = true;
+    public static boolean isDeBug = Common.isDeBug;
     /**
      * VERBOSE日志形式的标识符
      */

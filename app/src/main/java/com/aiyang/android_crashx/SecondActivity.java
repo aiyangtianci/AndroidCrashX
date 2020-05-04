@@ -1,4 +1,6 @@
 package com.aiyang.android_crashx;
 
-public class SecondActivity  {
+import androidx.appcompat.app.AppCompatActivity;
+
+public class SecondActivity  extends AppCompatActivity {
 }

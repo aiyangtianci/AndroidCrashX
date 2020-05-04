@@ -3,7 +3,7 @@
 
     <string name="crash_over">异常已被处理</string>
 
-    <string name="carsh_noway">异常未拦截,请重启</string>
+    <string name="carsh_noway">异常未拦截,应用重启</string>
 
     <string name="carsh_canvers">视图绘制出现异常</string>
 

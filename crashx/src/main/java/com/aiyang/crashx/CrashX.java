@@ -17,10 +17,4 @@ public final class CrashX{
             rCrash.setUncaughtCrash();
         }
     }
-
-    //扩展功能：设置正式环境、debug环境功能提示不同
-    public static void setDebug(){
-
-    }
-
 }

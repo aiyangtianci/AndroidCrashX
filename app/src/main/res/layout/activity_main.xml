@@ -54,16 +54,6 @@
                 android:text="——————native 崩溃"/>
 
 
-            <com.aiyang.android_crashx.MyView
-                android:layout_width="200dp"
-                android:layout_height="wrap_content"
-                android:text="（自定义）View绘制"
-                android:background="@color/colorPrimary"
-                android:textColor="@color/white"
-                android:onClick="clickRuntiomeException"
-                android:layout_marginTop="30dp"
-                />
-
             <Button
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
@@ -73,6 +63,16 @@
                 android:textColor="@color/white"
                 android:onClick="clickStartActivity" />
 
+
+            <Button
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:text="（自定义）View绘制"
+                android:background="@color/colorPrimary"
+                android:textColor="@color/white"
+                android:onClick="clickRuntiomeException"
+                android:layout_marginTop="30dp"
+                />
 
             <Button
                 android:layout_width="200dp"
