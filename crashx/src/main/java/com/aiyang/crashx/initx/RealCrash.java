@@ -75,9 +75,10 @@ public final class RealCrash implements Thread.UncaughtExceptionHandler, ICrash 
         if (t == Looper.getMainLooper().getThread()){
             if (Common.FIX_MIAN_HHREAD){
                 if (keepLoop.isChoreographerException(tw)){
+                    //提示
+                    LogUtils.d(mContext.getString(R.string.carsh_canvers));
                     canNotCatchCrash(t, tw);
                 }else{
-                    //提示
                     LogUtils.d(mContext.getString(R.string.crash_tip2));
                     Utils.show(mContext,mContext.getString(R.string.crash_tip2));
                     //日志
@@ -92,6 +93,7 @@ public final class RealCrash implements Thread.UncaughtExceptionHandler, ICrash 
                 @Override
                 public void run() {
                     Looper.prepare();
+                    //提示
                     LogUtils.d(mContext.getString(R.string.crash_tip1));
                     Utils.show(mContext,mContext.getString(R.string.crash_tip1));
                     Looper.loop();
@@ -102,12 +104,11 @@ public final class RealCrash implements Thread.UncaughtExceptionHandler, ICrash 
     }
 
     /**
-     * Uncaught Exception：To the system default process
+     * Uncaught Exception：restartApp and To the system default process
      * @param thread
      * @param throwable
      */
     private void canNotCatchCrash(Thread thread, Throwable throwable){
-        LogUtils.d(mContext.getString(R.string.carsh_canvers));
         Utils.restarteApp(mContext);
         if (mDefaultCaughtExceptionHandler == null){
             mDefaultCaughtExceptionHandler = Thread.getDefaultUncaughtExceptionHandler();

@@ -41,6 +41,7 @@ public final class KeepLoop implements IKeepLoop {
                         LogFile.saveCrashLog(mContext,e);
                         //提示打印
                         if(isChoreographerException(e)){
+                            LogUtils.d(mContext.getString(R.string.carsh_canvers));
                             canNotCatchCrash(mContext,thread,e);
                         }else{
                             LogUtils.d(mContext.getString(R.string.crash_over));
@@ -83,15 +84,15 @@ public final class KeepLoop implements IKeepLoop {
     }
 
     /**
-     * Uncaught Exception：To the system default process
+     * Uncaught Exception：restartApp  and  To the system default process
      * @param thread
      * @param throwable
      */
     private void canNotCatchCrash(Context mContext,Thread thread, Throwable throwable){
-        LogUtils.d(mContext.getString(R.string.carsh_canvers));
         Utils.restarteApp(mContext);
         Thread.UncaughtExceptionHandler  mDefaultCaughtExceptionHandler = Thread.getDefaultUncaughtExceptionHandler();
         mDefaultCaughtExceptionHandler.uncaughtException(thread, throwable);
     }
+
 
 }

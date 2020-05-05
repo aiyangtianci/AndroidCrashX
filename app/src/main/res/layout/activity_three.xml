@@ -6,7 +6,7 @@
 
 
     <Button
-        android:text="生命周期抛出异常"
+        android:text="Activity生命周期方法抛出异常"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         app:layout_constraintLeft_toLeftOf="parent"
