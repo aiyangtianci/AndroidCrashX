@@ -34,11 +34,6 @@ public final class RealCrash implements Thread.UncaughtExceptionHandler, ICrash 
      */
     @Override
     public void setUncaughtCrash() {
-        if (!Common.FIX_OPENED){
-            Common.FIX_OPENED = true;
-        }else{
-            return;
-        }
         if (mDefaultCaughtExceptionHandler == null){
             mDefaultCaughtExceptionHandler = Thread.getDefaultUncaughtExceptionHandler();
         }

@@ -24,7 +24,7 @@
                 android:padding="10dp"
                 android:background="@color/gray"
                 android:textColor="@color/black"
-                android:text="——————author艾阳"/>
+                android:text="——————Author艾阳"/>
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="160dp"
@@ -42,7 +42,7 @@
                 android:padding="10dp"
                 android:background="@color/gray"
                 android:textColor="@color/black"
-                android:text="——————java 崩溃"/>
+                android:text="——————Java 崩溃"/>
             <Button
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
@@ -69,7 +69,7 @@
                 android:padding="10dp"
                 android:textColor="@color/black"
                 android:layout_marginTop="30dp"
-                android:text="——————native 崩溃"/>
+                android:text="——————Native 崩溃"/>
 
 
             <Button
@@ -85,7 +85,7 @@
             <Button
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
-                android:text="（自定义）View绘制"
+                android:text="（自定义）view绘制"
                 android:background="@color/colorPrimary"
                 android:textColor="@color/white"
                 android:onClick="clickRuntiomeException"
@@ -95,7 +95,7 @@
             <Button
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
-                android:text="Activity生命周期异常"
+                android:text="Activity生命周期"
                 android:layout_marginTop="30dp"
                 android:background="@color/colorPrimary"
                 android:textColor="@color/white"
@@ -109,7 +109,7 @@
                 android:padding="10dp"
                 android:textColor="@color/black"
                 android:layout_marginTop="30dp"
-                android:text="——————ANR"/>
+                android:text="——————Error错误"/>
 
             <Button
                 android:layout_width="200dp"
@@ -120,6 +120,14 @@
                 android:textColor="@color/white"
                 android:onClick="clickANR" />
 
+            <Button
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:text="（主线程）OOM"
+                android:layout_marginTop="30dp"
+                android:background="@color/colorPrimary"
+                android:textColor="@color/white"
+                android:onClick="clickOOM" />
         </LinearLayout>
 
     </ScrollView>

@@ -9,6 +9,8 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.aiyang.crashx.util.Utils;
+
 /**
  * @author aiyang
  * Blog：https://blog.csdn.net/csdn_aiyang
@@ -59,19 +61,23 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /*
-    =========================== ANR  ===========================
+    =========================== Error  ===========================
      */
     //ANR
     public void clickANR(View view) {
-        while (true) {
-            try {
-                Thread.sleep(1000);
-            } catch (Exception ignored) {
-            }
-        }
+//        while (true) {
+//            try {
+//                Thread.sleep(1000);
+//            } catch (Exception ignored) {
+//            }
+//        }
+        Utils.show(this,"敬请期待");
     }
 
-
+    //OOM
+    public void clickOOM(View view) {
+        Utils.show(this,"敬请期待");
+    }
     /*
      =========================== 错误日志  ===========================
      */
@@ -91,4 +97,6 @@ public class MainActivity extends AppCompatActivity {
         inflater.inflate(R.menu.main, menu);
         return true;
     }
+
+
 }
