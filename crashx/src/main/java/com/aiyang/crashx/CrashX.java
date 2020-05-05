@@ -26,7 +26,6 @@ public final class CrashX{
      * @return Return zero if successful, non-zero otherwise.
      */
     public static int install(Context ctx) {
-
         return install(ctx, null);
 
     }
@@ -68,7 +67,7 @@ public final class CrashX{
 
     public static class InitParameters {
         /*是否开启了测试模式*/
-          boolean isDeBug = true;
+          boolean isDeBug = BuildConfig.DEBUG;
 
         /*是否开启了拦截主线程，keeploop*/
           boolean FIX_MIAN_HHREAD = true;
