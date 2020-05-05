@@ -54,7 +54,7 @@ public final class KeepLoop implements IKeepLoop {
     }
 
     /**
-     * 该异常是来自View绘制
+     * this throwable is from choreographer
      * @param e
      * @return
      */
@@ -76,7 +76,6 @@ public final class KeepLoop implements IKeepLoop {
             if ("android.view.Choreographer".equals(element.getClassName())
                     && "Choreographer.java".equals(element.getFileName())
                     && "doFrame".equals(element.getMethodName())) {
-                //handle e
                 return true;
             }
         }

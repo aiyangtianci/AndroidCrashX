@@ -9,6 +9,11 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 
+/**
+ * @author aiyang
+ * Blog：https://blog.csdn.net/csdn_aiyang
+ * Git ：https://github.com/aiyangtianci
+ */
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -67,15 +72,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    /**
-     * log日志记录查看
-     * @param item
-     * @return
+    /*
+     =========================== 错误日志  ===========================
      */
     @Override
     public boolean onOptionsItemSelected(MenuItem item){
         switch (item.getItemId()) {
             case R.id.action_log:
+                //记录查看
                 startActivity(new Intent(MainActivity.this, CrashLogActivity.class));
                 break;
         }

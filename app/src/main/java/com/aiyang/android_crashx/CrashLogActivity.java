@@ -19,6 +19,10 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
+/**
+ * 错误日志
+ * @author aiyang
+ */
 public class CrashLogActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private LogAdapter adapter;
@@ -48,6 +52,9 @@ public class CrashLogActivity extends AppCompatActivity {
                     return;
                 }
                 File file = new File(dir);
+                if (file == null){
+                    return;
+                }
                 List<File> fs = Arrays.asList(file.listFiles());
 
                 Collections.sort(fs, new Comparator<File>() {

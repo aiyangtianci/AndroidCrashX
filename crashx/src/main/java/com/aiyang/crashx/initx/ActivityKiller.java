@@ -18,6 +18,7 @@ import java.lang.reflect.Field;
 /**
  * If ignore the life cycle of abnormal words will directly lead to black screen,
  * Now FinishActivity ends an Activity whose lifecycle throws an exception.
+ * @author aiyang
  */
 public class ActivityKiller {
    public static volatile IActivityKiller mKill = null;
