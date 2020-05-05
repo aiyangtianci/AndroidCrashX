@@ -47,7 +47,7 @@ public final class KeepLoop implements IKeepLoop {
                             LogUtils.d(mContext.getString(R.string.crash_over));
                             Utils.show(mContext,mContext.getString(R.string.crash_over));
                         }
-                        e.printStackTrace();
+//                        e.printStackTrace();
                     }
                 }
             }

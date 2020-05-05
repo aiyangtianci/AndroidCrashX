@@ -18,9 +18,9 @@ import java.util.TreeMap;
 
 /**
  * 日志文件
+ * @author aiyang
  */
 public class LogFile {
-    public static final String TAG = "CrashLog";
 
     public static void saveCrashLog(Context context, Throwable throwable) {
         Map<String, String> map = collectDeviceInfo(context);
@@ -59,7 +59,7 @@ public class LogFile {
         for (Map.Entry<String, String> entry : infos.entrySet()) {
             String key = entry.getKey();
             String value = entry.getValue();
-            sb.append(key).append("=").append(value).append("\n");
+            sb.append(key).append(" = ").append(value).append("\n");
         }
 
         Writer writer = new StringWriter();
@@ -76,10 +76,10 @@ public class LogFile {
 
         try {
             long timestamp = System.currentTimeMillis();
-            String time = new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss").format(new Date());
-            String fileName = "crash-" + time + "-" + timestamp + ".log";
+//            String time = new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss").format(new Date());
+//            String fileName =time + "-" + timestamp + ".log";
+            String fileName = ex.toString()+timestamp+ ".log";
             String cachePath = crashLogDir(context);
-
             File dir = new File(cachePath);
             dir.mkdirs();
             FileOutputStream fos = new FileOutputStream(cachePath + fileName);

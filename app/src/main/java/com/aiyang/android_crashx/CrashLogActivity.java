@@ -3,7 +3,6 @@ package com.aiyang.android_crashx;
 import android.os.Bundle;
 import android.os.Handler;
 
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -13,8 +12,10 @@ import com.aiyang.android_crashx.CrashLog.LogAdapter;
 import com.aiyang.crashx.util.LogFile;
 
 import java.io.File;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Calendar;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
@@ -31,6 +32,7 @@ public class CrashLogActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.crash_log);
+        setTitle("Logcat 记录");
         initView();
     }
 
@@ -52,7 +54,7 @@ public class CrashLogActivity extends AppCompatActivity {
                     return;
                 }
                 File file = new File(dir);
-                if (file == null){
+                if (file.listFiles() == null){
                     return;
                 }
                 List<File> fs = Arrays.asList(file.listFiles());
@@ -66,11 +68,19 @@ public class CrashLogActivity extends AppCompatActivity {
 
                 final List<Log> logs = new ArrayList<>();
                 for (File f : fs) {
-                    logs.add(new Log(f, f.getName(), null));
+                    logs.add(new Log(f, f.getName(), null,getModifiedTime(f)));
                 }
                 adapter.setFileList(logs);
             }
         });
+    }
+
+    public static String getModifiedTime(File f){
+        Calendar cal = Calendar.getInstance();
+        long time = f.lastModified();
+        SimpleDateFormat formatter = new SimpleDateFormat("MM月dd日 HH:mm:ss");
+        cal.setTimeInMillis(time);
+        return formatter.format(cal.getTime());
     }
 
 }

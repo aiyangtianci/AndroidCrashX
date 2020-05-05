@@ -72,17 +72,17 @@ public final class RealCrash implements Thread.UncaughtExceptionHandler, ICrash 
         if (tw ==null) {
             return  false;
         }
+        //Log记录
+        LogFile.saveCrashLog(mContext, tw);
         if (t == Looper.getMainLooper().getThread()){
             if (Common.FIX_MIAN_HHREAD){
+                //提示
                 if (keepLoop.isChoreographerException(tw)){
-                    //提示
                     LogUtils.d(mContext.getString(R.string.carsh_canvers));
                     canNotCatchCrash(t, tw);
                 }else{
                     LogUtils.d(mContext.getString(R.string.crash_tip2));
                     Utils.show(mContext,mContext.getString(R.string.crash_tip2));
-                    //日志
-                    LogFile.saveCrashLog(mContext, tw);
                 }
                 keepLoop.keepLoop(t,mContext);
             }else{

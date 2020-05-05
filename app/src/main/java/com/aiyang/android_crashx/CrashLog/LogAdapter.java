@@ -41,7 +41,9 @@ public class LogAdapter extends RecyclerView.Adapter<LogAdapter.LogVH> {
         holder.title.setTag(position);
         Log log = getData(position);
         holder.copy.setTag(log.content);
-        holder.title.setText(log.title);
+        holder.title.setText("（"+(position+1)+"）"+log.title);
+        holder.time.setText("Latest："+log.time);
+
         if (log.content == null) {
             holder.content.setVisibility(View.GONE);
             holder.copy.setVisibility(View.INVISIBLE);
@@ -72,10 +74,12 @@ public class LogAdapter extends RecyclerView.Adapter<LogAdapter.LogVH> {
         TextView title;
         TextView content;
         TextView copy;
+        TextView time;
 
         public LogVH(ViewGroup parent) {
             super(LayoutInflater.from(mContext).inflate(R.layout.item_crash_log,parent , false));
             title = itemView.findViewById(R.id.title);
+            time = itemView.findViewById(R.id.time);
             content = itemView.findViewById(R.id.content);
             copy = itemView.findViewById(R.id.copy);
             title.setOnClickListener(new View.OnClickListener() {
@@ -84,6 +88,9 @@ public class LogAdapter extends RecyclerView.Adapter<LogAdapter.LogVH> {
                     int position = ((int) v.getTag());
                     if (logs.get(position).content == null) {
                         readFileContent(logs.get(position).file);
+                    }else{
+                        logs.get(position).content = null;
+                        notifyDataSetChanged();
                     }
                 }
             });
@@ -156,4 +163,6 @@ public class LogAdapter extends RecyclerView.Adapter<LogAdapter.LogVH> {
             }
         }
     }
+
+
 }
