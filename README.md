@@ -38,6 +38,9 @@ public class mApplication extends Application {
     public void onCreate() {
         super.onCreate();
         CrashX.install(this);
+	
+      	// 打包上线设为flase，不进行相关log、toast提示
+        // CrashX.install(this,new CrashX.InitParameters().setDebug(false));
     }
 }
 ```
