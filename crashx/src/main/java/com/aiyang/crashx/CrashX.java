@@ -30,7 +30,7 @@ public final class CrashX{
 
     }
 
-    private static synchronized int install(Context ctx, InitParameters params) {
+    public static synchronized int install(Context ctx, InitParameters params) {
         if (Common.FIX_OPENED && rCrash!=null){
             return Errno.OK;
         }
