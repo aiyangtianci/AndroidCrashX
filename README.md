@@ -10,7 +10,7 @@
 * 当绘制、测量、布局出现问题导致Crash时，关闭异常界面。
 
 ![Image](https://img-blog.csdnimg.cn/20200417151421500.jpg)<br/>
-[原理讲解，请查看我的博客:https://blog.csdn.net/csdn_aiyang/article/details/105054241](https://blog.csdn.net/csdn_aiyang/article/details/105054241"悬停显示")  <br/>
+[原理讲解，请查看我的博客:https://blog.csdn.net/csdn_aiyang/article/details/105054241](https://blog.csdn.net/csdn_aiyang/article/details/105054241)  <br/>
  
 ## 使用
 
@@ -38,6 +38,9 @@ public class mApplication extends Application {
     public void onCreate() {
         super.onCreate();
         CrashX.install(this);
+	
+      	// 打包上线设为flase，不进行相关log、toast提示
+        // CrashX.install(this,new CrashX.InitParameters().setDebug(false));
     }
 }
 ```
