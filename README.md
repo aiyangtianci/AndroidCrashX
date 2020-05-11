@@ -25,7 +25,7 @@ allprojects {
 }
  
 dependencies {
-   implementation 'com.github.aiyangtianci:AndroidCrashX:1.0.0'
+   implementation 'com.github.aiyangtianci:AndroidCrashX:2.0.0'
 }
 ```
 #### 2. 初始化 Crashx。
