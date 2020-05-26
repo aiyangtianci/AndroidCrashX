@@ -1,10 +1,10 @@
 # 介绍
 [![](https://jitpack.io/v/aiyangtianci/AndroidCrashX.svg)](https://jitpack.io/#aiyangtianci/AndroidCrashX)
-<br/>&nbsp;&nbsp; &nbsp;&nbsp;  🔥AndroidCrashX 能够降低APP线上崩溃次数，支持java 异常捕获、native崩溃和ANR处理、线上bug日志追踪。不需要根权限或任何系统权限。
+<br/>&nbsp;&nbsp; &nbsp;&nbsp;  🔥AndroidCrashX 能够降低APP线上崩溃次数，支持java 异常捕获、崩溃处理、线上bug日志追踪。不需要根权限或任何系统权限。
  
 ## 特性
 * 支持 Android 4.0 - 10（API level 14 - 29）。
-* 捕获 java 崩溃、native 崩溃和 ANR。
+* 捕获Android应用崩溃，并自动生成log日志记录📝。
 * 主线程或子线程抛出异常后，迫使主线程Looper持续loop()。
 * Activity生命周期中抛出异常，关闭异常页面。
 * 当绘制、测量、布局出现问题导致Crash时，关闭异常界面。
