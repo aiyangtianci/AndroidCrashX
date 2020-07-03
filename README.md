@@ -1,13 +1,19 @@
 # 介绍
 [![](https://jitpack.io/v/aiyangtianci/AndroidCrashX.svg)](https://jitpack.io/#aiyangtianci/AndroidCrashX)
-<br/>&nbsp;&nbsp; &nbsp;&nbsp;  🔥AndroidCrashX 能够降低APP线上崩溃次数，支持java 异常捕获、native崩溃和ANR处理、线上bug日志追踪。不需要根权限或任何系统权限。
+<br/>&nbsp;&nbsp; &nbsp;&nbsp;  🔥AndroidCrashX 能够降低APP线上崩溃次数，支持java 异常捕获、崩溃处理、线上bug日志追踪。不需要根权限或任何系统权限。
  
 ## 特性
 * 支持 Android 4.0 - 10（API level 14 - 29）。
-* 捕获 java 崩溃、native 崩溃和 ANR。
+* 捕获Android应用崩溃，并自动生成log日志记录📝。
 * 主线程或子线程抛出异常后，迫使主线程Looper持续loop()。
 * Activity生命周期中抛出异常，关闭异常页面。
 * 当绘制、测量、布局出现问题导致Crash时，关闭异常界面。
+
+## 优势
+* AndroidCrashX能够对发布上线后的应用，在崩溃发生时进行异常捕获并像腾讯bugly一样统计bug日志。这样就可以像开发阶段在AS中分析崩溃的原因及快速定位bug。
+* 子线程的异常拦截后程序不会Crash掉，但主线程中的异常即便拦截依然会让程序Crash掉。AndroidCrashX 会让程序继续运行，打造永不崩溃的应用。
+* 针对特殊的崩溃原因，进行特殊处理。如Activity生命周期崩溃处理、自定义View绘制等情况会关闭异常页。
+
 
 ![Image](https://img-blog.csdnimg.cn/20200417151421500.jpg)<br/>
 [原理讲解，请查看我的博客:https://blog.csdn.net/csdn_aiyang/article/details/105054241](https://blog.csdn.net/csdn_aiyang/article/details/105054241)  <br/>
@@ -25,7 +31,7 @@ allprojects {
 }
  
 dependencies {
-   implementation 'com.github.aiyangtianci:AndroidCrashX:2.0.0'
+   implementation 'com.github.aiyangtianci:AndroidCrashX:2.0.2'
 }
 ```
 #### 2. 初始化 Crashx。
@@ -52,7 +58,7 @@ public class mApplication extends Application {
 
 <img src="https://img-blog.csdnimg.cn/20200417151751716.jpeg" width="70" height="70">
 
-<img src="https://img-blog.csdnimg.cn/20200417151751711.png" width="70" height="70">
+<!-- <img src="https://img-blog.csdnimg.cn/20200417151751711.png" width="70" height="70"> -->
 
 <img src="https://img-blog.csdnimg.cn/20200417151751727.png" width="70" height="70">
 </div>
