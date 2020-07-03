@@ -7,6 +7,8 @@ import com.aiyang.crashx.inter.ICrash;
 import com.aiyang.crashx.util.Common;
 import com.aiyang.crashx.util.Errno;
 
+import me.weishu.freereflection.BuildConfig;
+
 /**
  * CrashX is a crash repair library for Android APP.
  */

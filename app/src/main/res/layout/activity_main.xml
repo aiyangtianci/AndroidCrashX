@@ -23,25 +23,34 @@
                 android:layout_height="wrap_content"
                 android:padding="10dp"
                 android:background="@color/gray"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:text="——————Author艾阳"/>
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="160dp"
+                android:autoLink="all"
+                android:background="@color/white"
                 android:gravity="center_vertical"
                 android:padding="10dp"
-                android:autoLink="all"
-                android:textColor="@color/colorPrimary"
-                android:background="@color/white"
-                android:text="——————Blog：https://blog.csdn.net/csdn_aiyang \n\n\n——————G i t：https://github.com/aiyangtianci"/>
+                android:text="——————Blog：https://blog.csdn.net/csdn_aiyang \n\n\n——————G i t：https://github.com/aiyangtianci"
+                android:textColor="@color/colorPrimary" />
 
+            <Button
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:text="开启"
+                android:layout_margin="30dp"
+                android:background="@color/colorPrimary"
+                android:textColor="@color/white"
+                android:onClick="switchCrashX" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="10dp"
                 android:background="@color/gray"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:text="——————Java 崩溃"/>
             <Button
                 android:layout_width="200dp"
@@ -67,7 +76,7 @@
                 android:layout_height="wrap_content"
                 android:background="@color/gray"
                 android:padding="10dp"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:layout_marginTop="30dp"
                 android:text="——————Native 崩溃"/>
 

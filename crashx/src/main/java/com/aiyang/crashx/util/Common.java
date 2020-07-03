@@ -1,6 +1,6 @@
 package com.aiyang.crashx.util;
 
-public class Common {
+public final class Common {
 
     /*记录安装，避免重复*/
     public static volatile boolean FIX_OPENED = false;

@@ -1,4 +1,4 @@
-package com.aiyang.android_crashx;
+package com.aiyang.android_crashx.CrashActivity;
 
 import android.os.Bundle;
 import android.view.View;
@@ -6,6 +6,8 @@ import android.view.View;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.aiyang.android_crashx.MyView;
+import com.aiyang.android_crashx.R;
 import com.aiyang.crashx.util.Common;
 
 public class FourActivity extends AppCompatActivity {

@@ -1,4 +1,4 @@
-package com.aiyang.android_crashx;
+package com.aiyang.android_crashx.CrashActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,6 +7,7 @@ import android.view.View;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.aiyang.android_crashx.R;
 import com.aiyang.crashx.util.LogUtils;
 
 public class ThreeActivity extends AppCompatActivity {

@@ -33,7 +33,7 @@ public final class KeepLoop implements IKeepLoop {
     public void keepLoop(Thread thread,final Context mContext) {
             if (Common.FIX_WHILE_OPEN){
                 Common.FIX_WHILE_OPEN = false;
-                while (true) {
+                while (Common.FIX_MIAN_HHREAD) {
                     try {
                         Looper.loop();
                     } catch (Throwable e) {
@@ -42,6 +42,7 @@ public final class KeepLoop implements IKeepLoop {
                         //提示打印
                         if(isChoreographerException(e)){
                             LogUtils.d(mContext.getString(R.string.carsh_canvers));
+                            Utils.show(mContext,mContext.getString(R.string.carsh_canvers));
                             canNotCatchCrash(mContext,thread,e);
                         }else{
                             LogUtils.d(mContext.getString(R.string.crash_over));

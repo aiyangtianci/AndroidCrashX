@@ -1,4 +1,4 @@
-package com.aiyang.android_crashx;
+package com.aiyang.android_crashx.CrashLog;
 
 import android.os.Bundle;
 import android.os.Handler;
@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.aiyang.android_crashx.CrashLog.Log;
 import com.aiyang.android_crashx.CrashLog.LogAdapter;
+import com.aiyang.android_crashx.R;
 import com.aiyang.crashx.util.LogFile;
 
 import java.io.File;

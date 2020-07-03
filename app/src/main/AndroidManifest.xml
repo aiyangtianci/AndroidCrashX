@@ -18,9 +18,9 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".ThreeActivity"  android:launchMode="singleInstance"/>
-        <activity android:name=".FourActivity"/>
-        <activity android:name=".CrashLogActivity"/>
+        <activity android:name=".CrashActivity.ThreeActivity"  android:launchMode="singleInstance"/>
+        <activity android:name=".CrashActivity.FourActivity"/>
+        <activity android:name=".CrashLog.CrashLogActivity"/>
     </application>
 
 </manifest>

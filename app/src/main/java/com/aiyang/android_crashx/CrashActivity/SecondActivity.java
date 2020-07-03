@@ -1,4 +1,4 @@
-package com.aiyang.android_crashx;
+package com.aiyang.android_crashx.CrashActivity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
