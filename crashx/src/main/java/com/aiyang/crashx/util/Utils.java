@@ -71,6 +71,7 @@ public class Utils {
         } else {
             builder.setNegativeButton("知道了", null);
         }
+        builder.setNegativeButton("算了，考虑一下",null);
         alertDialog = builder.create();
         alertDialog.setCanceledOnTouchOutside(false);
         if (!((Activity) context).isFinishing()) {

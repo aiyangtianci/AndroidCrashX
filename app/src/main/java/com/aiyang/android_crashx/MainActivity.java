@@ -40,9 +40,9 @@ public class MainActivity extends AppCompatActivity {
     public void switchCrashX(final View view) {
         String tilestr ="";
         if (Common.FIX_MIAN_KEEPLOOP){
-            tilestr = "点击确认后，系统出现异常时Crash，无法运行";
+            tilestr = "点击确认后，系统出现异常时Crash，将无法运行";
         }else {
-            tilestr = "点击确认后，系统出现异常时Crash，继续运行";
+            tilestr = "点击确认后，系统出现异常时Crash，将继续运行";
         }
         Utils.showSimpleDialog(this, "提示", tilestr, new DialogInterface.OnClickListener() {
             @Override
@@ -143,7 +143,7 @@ public class MainActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu){
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.main, menu);
-        menu.findItem(R.id.action_log).setTitle("Logcat记录    ");
+        menu.findItem(R.id.action_log).setTitle("LogCrash记录    ");
         return true;
     }
 }

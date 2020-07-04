@@ -39,6 +39,7 @@ public class ViewDrawActivity extends AppCompatActivity {
         mLl_parent = findViewById(R.id.mLl_parent);
         crashViewone = findViewById(R.id.crashviewone);
         life_show = findViewById(R.id.life_show);
+        readLogFile(life_show);
     }
 
     @Override
@@ -61,8 +62,6 @@ public class ViewDrawActivity extends AppCompatActivity {
     public void clickSelfException(View view) {
         crashViewone.isCrash = true;
         crashViewone.setVisibility(View.VISIBLE);
-        life_show.setText("");
-        readLogFile(life_show);
     }
 
     /**
@@ -71,12 +70,10 @@ public class ViewDrawActivity extends AppCompatActivity {
      */
     public void clickOtherException(View view) {
         MyView myView = new MyView(this);
-        myView.isCrash = true;
         mLl_parent.addView(myView);
-//        myView.invalidate();
 
-        life_show.setText("");
-        readLogFile(life_show);
+        myView.isCrash = true;
+        myView.invalidate();
     }
 
     private void readLogFile(TextView showLog) {
@@ -112,10 +109,10 @@ public class ViewDrawActivity extends AppCompatActivity {
      */
     public void click_on_off(final View view) {
         String tilestr ="";
-        if (Common.FIX_MIAN_KEEPLOOP){
-            tilestr = "点击确认后，UI绘制出现异常时Crash，无法运行";
+        if (Common.VIEW_TOUCH_RUNTIOME){
+            tilestr = "点击确认后，UI绘制出现异常时Crash，将无法运行";
         }else {
-            tilestr = "点击确认后，UI绘制出现异常时Crash，跳回首页";
+            tilestr = "点击确认后，UI绘制出现异常时Crash，将跳回首页";
         }
         Utils.showSimpleDialog(this, "提示", tilestr, new DialogInterface.OnClickListener() {
             @Override

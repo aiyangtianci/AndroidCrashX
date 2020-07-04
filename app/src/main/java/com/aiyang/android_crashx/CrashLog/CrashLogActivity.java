@@ -33,11 +33,12 @@ public class CrashLogActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private LogAdapter adapter;
     Handler fileReadHandler = new Handler();
+    private  List<Log> logs;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.crash_log);
-        setTitle("Logcat 记录");
+        setTitle("LogCrash 记录");
         initView();
     }
 
@@ -61,7 +62,7 @@ public class CrashLogActivity extends AppCompatActivity {
                         return (int) (o2.lastModified() - o1.lastModified());
                     }
                 });
-                final List<Log> logs = new ArrayList<>();
+                logs = new ArrayList<>();
                 for (File f : fs) {
                     logs.add(new Log(f, f.getName(), null,getModifiedTime(f)));
                 }
@@ -80,6 +81,8 @@ public class CrashLogActivity extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         LogFile.deleteDirectory(getBaseContext());
+                        logs.clear();
+                        adapter.notifyDataSetChanged();
                     }
                 });
             break;
