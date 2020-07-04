@@ -12,8 +12,11 @@ import java.io.StringWriter;
 import java.io.Writer;
 import java.lang.reflect.Field;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
@@ -55,6 +58,12 @@ public class LogFile {
         return infos;
     }
 
+    /**
+     * sava files
+     * @param context
+     * @param ex
+     * @param infos
+     */
     private static void saveCrashInfo2File(Context context, Throwable ex, Map<String, String> infos) {
         StringBuilder sb = new StringBuilder();
         for (Map.Entry<String, String> entry : infos.entrySet()) {
@@ -90,11 +99,68 @@ public class LogFile {
         }
     }
 
+    /**
+     * get files
+     * @param context
+     * @return
+     */
+    public static List<File> getCrashFiles(Context context){
+        List<File> fs = new ArrayList<>();
+        String dir = LogFile.crashLogDir(context);
+        if (dir == null) {
+            return fs;
+        }
+        File file = new File(dir);
+        if (file.listFiles() == null){
+            return fs;
+        }
+        fs = Arrays.asList(file.listFiles());
+        return fs;
+    }
+    /**
+     * delete files
+     * @return
+     */
+    public static boolean deleteDirectory(Context context) {
+        String dir = LogFile.crashLogDir(context);
+        if (dir == null){
+            return false;
+        }
+        if (!dir.endsWith(File.separator)) {
+            dir = dir + File.separator;//filePath添加文件分隔符
+        }
+        File dirFile = new File(dir);
+        if (!dirFile.exists() || !dirFile.isDirectory()) {
+            return false;
+        }
+        File[] files = dirFile.listFiles();
+        //遍历删除文件夹下的所有文件
+        for (int i = 0; i < files.length; i++) {
+            if (files[i].isFile()) {
+                //删除子文件
+                if (!deleteFile(files[i].getAbsolutePath())) {
+                    return false;
+                }
+            }
+        }
+        //删除当前空目录
+        return dirFile.delete();
+    }
+    /**
+     * file path
+     * @param context
+     * @return
+     */
     public static String crashLogDir(Context context) {
         return context.getCacheDir().getPath() + File.separator + "crash" + File
                 .separator;
     }
 
+    /**
+     * file time
+     * @param f
+     * @return
+     */
     public static String getModifiedTime(File f){
         Calendar cal = Calendar.getInstance();
         long time = f.lastModified();
@@ -103,4 +169,16 @@ public class LogFile {
         return formatter.format(cal.getTime());
     }
 
+    /**
+     * delete file
+     * @param   filePath
+     * @return
+     */
+    protected static boolean deleteFile(String filePath) {
+        File file = new File(filePath);
+        if (file.isFile() && file.exists()) {
+            return file.delete();
+        }
+        return false;
+    }
 }

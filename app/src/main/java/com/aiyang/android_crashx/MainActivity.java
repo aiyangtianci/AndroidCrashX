@@ -3,6 +3,7 @@ package com.aiyang.android_crashx;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -17,6 +18,7 @@ import com.aiyang.android_crashx.CrashActivity.NotFoundActivity;
 import com.aiyang.android_crashx.CrashActivity.StartLifeActivity;
 import com.aiyang.android_crashx.CrashLog.CrashLogActivity;
 import com.aiyang.crashx.util.Common;
+import com.aiyang.crashx.util.LogFile;
 import com.aiyang.crashx.util.Utils;
 
 import static com.aiyang.android_crashx.R.color.gray;
@@ -35,21 +37,44 @@ public class MainActivity extends AppCompatActivity {
     }
 
     //CrashX:on-off
-    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
-    public void switchCrashX(View view) {
-        Button on_off = (Button)view;
+    public void switchCrashX(final View view) {
+        String tilestr ="";
         if (Common.FIX_MIAN_KEEPLOOP){
-            Common.FIX_MIAN_KEEPLOOP = false;
-            on_off.setText("关闭-OFF");
-            on_off.setBackgroundColor(getResources().getColor(gray));
-        }else{
-            Common.FIX_MIAN_KEEPLOOP = true;
-            on_off.setText("已开启-On");
-            on_off.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+            tilestr = "点击确认后，系统出现异常时Crash，无法运行";
+        }else {
+            tilestr = "点击确认后，系统出现异常时Crash，继续运行";
         }
+        Utils.showSimpleDialog(this, "提示", tilestr, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                Button on_off = (Button)view;
+                if (Common.FIX_MIAN_KEEPLOOP){
+                    Common.FIX_MIAN_KEEPLOOP = false;
+                    on_off.setText("关闭-OFF");
+                    on_off.setBackgroundColor(getResources().getColor(R.color.gray));
+                }else{
+                    Common.FIX_MIAN_KEEPLOOP = true;
+                    on_off.setText("已开启-On");
+                    on_off.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+                }
+            }
+        });
+
     }
 
-   // =========================== JAVA  ===========================
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Button on_off = findViewById(R.id.switchCrashX);
+        if (Common.FIX_MIAN_KEEPLOOP){
+            on_off.setText("已开启-On");
+            on_off.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+        }else{
+            on_off.setText("关闭-OFF");
+            on_off.setBackgroundColor(getResources().getColor(R.color.gray));
+        }
+    }
+    // =========================== JAVA  ===========================
 
    //（主线程）空指针异常
     public void clickNullPointerException(View view) {
@@ -118,7 +143,7 @@ public class MainActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu){
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.main, menu);
+        menu.findItem(R.id.action_log).setTitle("Logcat记录    ");
         return true;
     }
-
 }

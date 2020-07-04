@@ -92,7 +92,7 @@ public final class KeepLoop implements IKeepLoop {
     @Override
     public void onDrawCrashKeepRun(Context mContext,Thread thread, Throwable throwable) {
         Utils.restarteApp(mContext);
-        Thread.UncaughtExceptionHandler  mDefaultCaughtExceptionHandler = Thread.getDefaultUncaughtExceptionHandler();
-        mDefaultCaughtExceptionHandler.uncaughtException(thread, throwable);
+//        Thread.UncaughtExceptionHandler  mDefaultCaughtExceptionHandler = Thread.getDefaultUncaughtExceptionHandler();
+//        mDefaultCaughtExceptionHandler.uncaughtException(thread, throwable);
     }
 }

@@ -37,6 +37,7 @@
                 android:textColor="@color/colorPrimary" />
 
             <Button
+                android:id="@+id/switchCrashX"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:text="已开启-On"

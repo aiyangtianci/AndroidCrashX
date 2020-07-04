@@ -1,5 +1,6 @@
 package com.aiyang.android_crashx.CrashActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -15,6 +16,7 @@ import com.aiyang.android_crashx.CrashLog.Log;
 import com.aiyang.android_crashx.R;
 import com.aiyang.crashx.util.Common;
 import com.aiyang.crashx.util.LogFile;
+import com.aiyang.crashx.util.Utils;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -37,7 +39,19 @@ public class ViewDrawActivity extends AppCompatActivity {
         mLl_parent = findViewById(R.id.mLl_parent);
         crashViewone = findViewById(R.id.crashviewone);
         life_show = findViewById(R.id.life_show);
+    }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Button on_off = findViewById(R.id.on_off);
+        if (Common.VIEW_TOUCH_RUNTIOME){
+            on_off.setText("已开启-On");
+            on_off.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+        }else{
+            on_off.setText("关闭-OFF");
+            on_off.setBackgroundColor(getResources().getColor(R.color.gray));
+        }
     }
 
     /**
@@ -61,21 +75,12 @@ public class ViewDrawActivity extends AppCompatActivity {
         mLl_parent.addView(myView);
 //        myView.invalidate();
 
-//        life_show.setText("");
-//        readLogFile(life_show);
+        life_show.setText("");
+        readLogFile(life_show);
     }
 
     private void readLogFile(TextView showLog) {
-        String dir = LogFile.crashLogDir(getBaseContext());
-        if (dir == null) {
-            return;
-        }
-        File file = new File(dir);
-        if (file.listFiles() == null) {
-            return;
-        }
-        List<File> fs = Arrays.asList(file.listFiles());
-
+        List<File> fs = LogFile.getCrashFiles(getBaseContext());
         Collections.sort(fs, new Comparator<File>() {
             @Override
             public int compare(File o1, File o2) {
@@ -105,16 +110,28 @@ public class ViewDrawActivity extends AppCompatActivity {
      * View绘制异常处理——开关
      * @param view
      */
-    public void click_on_off(View view) {
-        Button on_off = (Button)view;
-        if (Common.VIEW_TOUCH_RUNTIOME){
-            Common.VIEW_TOUCH_RUNTIOME = false;
-            on_off.setText("关闭-OFF");
-            on_off.setBackgroundColor(getResources().getColor(R.color.gray));
-        }else{
-            Common.VIEW_TOUCH_RUNTIOME = true;
-            on_off.setText("已开启-On");
-            on_off.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+    public void click_on_off(final View view) {
+        String tilestr ="";
+        if (Common.FIX_MIAN_KEEPLOOP){
+            tilestr = "点击确认后，UI绘制出现异常时Crash，无法运行";
+        }else {
+            tilestr = "点击确认后，UI绘制出现异常时Crash，跳回首页";
         }
+        Utils.showSimpleDialog(this, "提示", tilestr, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                Button on_off = (Button)view;
+                if (Common.VIEW_TOUCH_RUNTIOME){
+                    Common.VIEW_TOUCH_RUNTIOME = false;
+                    on_off.setText("关闭-OFF");
+                    on_off.setBackgroundColor(getResources().getColor(R.color.gray));
+                }else{
+                    Common.VIEW_TOUCH_RUNTIOME = true;
+                    on_off.setText("已开启-On");
+                    on_off.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+                }
+            }
+        });
+
     }
 }

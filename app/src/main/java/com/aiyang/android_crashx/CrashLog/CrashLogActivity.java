@@ -1,22 +1,24 @@
 package com.aiyang.android_crashx.CrashLog;
 
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.aiyang.android_crashx.CrashLog.Log;
-import com.aiyang.android_crashx.CrashLog.LogAdapter;
 import com.aiyang.android_crashx.R;
 import com.aiyang.crashx.util.LogFile;
+import com.aiyang.crashx.util.Utils;
 
 import java.io.File;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Calendar;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
@@ -52,23 +54,13 @@ public class CrashLogActivity extends AppCompatActivity {
         fileReadHandler.post(new Runnable() {
             @Override
             public void run() {
-                String dir = LogFile.crashLogDir(getBaseContext());
-                if (dir == null) {
-                    return;
-                }
-                File file = new File(dir);
-                if (file.listFiles() == null){
-                    return;
-                }
-                List<File> fs = Arrays.asList(file.listFiles());
-
+                List<File> fs = LogFile.getCrashFiles(getBaseContext());
                 Collections.sort(fs, new Comparator<File>() {
                     @Override
                     public int compare(File o1, File o2) {
                         return (int) (o2.lastModified() - o1.lastModified());
                     }
                 });
-
                 final List<Log> logs = new ArrayList<>();
                 for (File f : fs) {
                     logs.add(new Log(f, f.getName(), null,getModifiedTime(f)));
@@ -78,5 +70,29 @@ public class CrashLogActivity extends AppCompatActivity {
         });
     }
 
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item){
+        switch (item.getItemId()) {
+            case R.id.action_log:
+                //清除
+                Utils.showSimpleDialog(this, "清空确认", "点击确认，将彻底删除所有数据内容，并且无法恢复。", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        LogFile.deleteDirectory(getBaseContext());
+                    }
+                });
+            break;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu){
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.main, menu);
+        menu.findItem(R.id.action_log).setTitle("清空记录    ");
+        return true;
+    }
 
 }
