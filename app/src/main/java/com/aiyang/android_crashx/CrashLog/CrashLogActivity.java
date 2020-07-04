@@ -21,6 +21,8 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
+import static com.aiyang.crashx.util.LogFile.getModifiedTime;
+
 /**
  * 错误日志
  * @author aiyang
@@ -76,12 +78,5 @@ public class CrashLogActivity extends AppCompatActivity {
         });
     }
 
-    public static String getModifiedTime(File f){
-        Calendar cal = Calendar.getInstance();
-        long time = f.lastModified();
-        SimpleDateFormat formatter = new SimpleDateFormat("MM月dd日 HH:mm:ss");
-        cal.setTimeInMillis(time);
-        return formatter.format(cal.getTime());
-    }
 
 }

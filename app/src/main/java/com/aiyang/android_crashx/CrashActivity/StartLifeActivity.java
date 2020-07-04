@@ -10,7 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.aiyang.android_crashx.R;
 import com.aiyang.crashx.util.LogUtils;
 
-public class ThreeActivity extends AppCompatActivity {
+public class StartLifeActivity extends AppCompatActivity {
     private String LIFE_METHOD;
 
     @Override

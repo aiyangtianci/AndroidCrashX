@@ -12,6 +12,7 @@ import java.io.StringWriter;
 import java.io.Writer;
 import java.lang.reflect.Field;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Map;
 import java.util.TreeMap;
@@ -93,4 +94,13 @@ public class LogFile {
         return context.getCacheDir().getPath() + File.separator + "crash" + File
                 .separator;
     }
+
+    public static String getModifiedTime(File f){
+        Calendar cal = Calendar.getInstance();
+        long time = f.lastModified();
+        SimpleDateFormat formatter = new SimpleDateFormat("MM月dd日 HH:mm:ss");
+        cal.setTimeInMillis(time);
+        return formatter.format(cal.getTime());
+    }
+
 }

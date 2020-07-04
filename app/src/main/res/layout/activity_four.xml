@@ -2,25 +2,82 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/mLl_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-
-    <com.aiyang.android_crashx.MyView
-        android:text="绘制异常"
+    <Button
+        android:id="@+id/on_off"
+        android:text="已开启-On"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
+        android:layout_margin="30dp"
+        android:background="@color/colorPrimary"
+        android:textColor="@color/white"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        android:onClick="click_on_off"
+        />
+    <Button
+        android:text="xml布局绘制异常"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="30dp"
+        android:background="@color/colorPrimary"
+        android:textColor="@color/white"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/on_off"
+        android:id="@+id/one"
+        android:onClick="clickSelfException"
+        />
+
+    <Button
+        android:text="自定义view重绘异常"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:background="@color/colorPrimary"
+        android:textColor="@color/white"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/one"
+        android:layout_marginTop="20dp"
+        android:onClick="clickOtherException"
+        />
+
+
+    <com.aiyang.android_crashx.CrashActivity.MyView
+        android:id="@+id/crashviewone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/one"
         android:layout_marginTop="100dp"
-        android:onClick="clickRuntiomeException"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:background="@drawable/background_img"
+        android:visibility="gone"
         />
 
-    <ImageView
+    <com.aiyang.android_crashx.CrashActivity.MyView
+        android:id="@+id/crashviewtwo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/one"
+        android:layout_marginTop="100dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:background="@drawable/background_img"
+        />
+
+    <TextView
+        android:id="@+id/life_show"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:padding="100dp"
-        android:src="@drawable/background_img"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/crashviewtwo"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:padding="50dp"
+        android:text="记录📝："
         />
-
 </androidx.constraintlayout.widget.ConstraintLayout>

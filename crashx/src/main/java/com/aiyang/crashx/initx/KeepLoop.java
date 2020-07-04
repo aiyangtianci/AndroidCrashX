@@ -33,7 +33,7 @@ public final class KeepLoop implements IKeepLoop {
     public void keepLoop(Thread thread,final Context mContext) {
             if (Common.FIX_WHILE_OPEN){
                 Common.FIX_WHILE_OPEN = false;
-                while (Common.FIX_MIAN_HHREAD) {
+                while (Common.FIX_MIAN_KEEPLOOP) {
                     try {
                         Looper.loop();
                     } catch (Throwable e) {
@@ -43,7 +43,9 @@ public final class KeepLoop implements IKeepLoop {
                         if(isChoreographerException(e)){
                             LogUtils.d(mContext.getString(R.string.carsh_canvers));
                             Utils.show(mContext,mContext.getString(R.string.carsh_canvers));
-                            canNotCatchCrash(mContext,thread,e);
+                            if (Common.VIEW_TOUCH_RUNTIOME){
+                                onDrawCrashKeepRun(mContext,thread,e);
+                            }
                         }else{
                             LogUtils.d(mContext.getString(R.string.crash_over));
                             Utils.show(mContext,mContext.getString(R.string.crash_over));
@@ -82,17 +84,15 @@ public final class KeepLoop implements IKeepLoop {
         }
         return false;
     }
-
     /**
      * Uncaught Exception：restartApp  and  To the system default process
      * @param thread
      * @param throwable
      */
-    private void canNotCatchCrash(Context mContext,Thread thread, Throwable throwable){
+    @Override
+    public void onDrawCrashKeepRun(Context mContext,Thread thread, Throwable throwable) {
         Utils.restarteApp(mContext);
         Thread.UncaughtExceptionHandler  mDefaultCaughtExceptionHandler = Thread.getDefaultUncaughtExceptionHandler();
         mDefaultCaughtExceptionHandler.uncaughtException(thread, throwable);
     }
-
-
 }

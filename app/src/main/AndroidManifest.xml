@@ -17,9 +17,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".CrashActivity.ThreeActivity"  android:launchMode="singleInstance"/>
-        <activity android:name=".CrashActivity.FourActivity"/>
+<!--        <activity android:name=".CrashActivity.SecondActivity"/>-->
+        <activity android:name=".CrashActivity.StartLifeActivity"  android:launchMode="singleInstance"/>
+        <activity android:name=".CrashActivity.ViewDrawActivity"/>
         <activity android:name=".CrashLog.CrashLogActivity"/>
     </application>
 

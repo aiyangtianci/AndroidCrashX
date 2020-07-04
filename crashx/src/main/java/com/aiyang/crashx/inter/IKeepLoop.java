@@ -9,8 +9,14 @@ public interface IKeepLoop {
     void  keepLoop(Thread thread,Context mContext);
 
     /**
-     * 绘制时抛出异常
+     * 检查是否view绘制时抛出异常
      * @param e
      */
     boolean isChoreographerException(Throwable e);
+
+    /**
+     * view绘制处理
+     */
+
+    void onDrawCrashKeepRun(Context mContext,Thread thread, Throwable throwable);
 }

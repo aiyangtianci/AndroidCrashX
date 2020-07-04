@@ -54,7 +54,7 @@ public final class CrashX{
             params = new InitParameters();
         }
         Common.isDeBug = params.isDeBug;
-        Common.FIX_MIAN_HHREAD =params.FIX_MIAN_HHREAD;
+        Common.FIX_MIAN_KEEPLOOP =params.FIX_MIAN_HHREAD;
         Common.FIX_MIAN_HOOKH =params.FIX_MIAN_HOOKH;
         Common.VIEW_TOUCH_RUNTIOME =params.VIEW_TOUCH_RUNTIOME;
 

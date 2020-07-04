@@ -50,10 +50,9 @@ public final class RealCrash implements Thread.UncaughtExceptionHandler, ICrash 
     public void uncaughtException(Thread thread, Throwable throwable) {
         LogUtils.d("UnCaughtException："+thread.toString());
         if (!handleException(thread,throwable)) {
-            canNotCatchCrash(thread, throwable);
+            mDefaultCaughtExceptionHandler.uncaughtException(thread, throwable);
         }
     }
-
 
     /**
      * handle Thread Exception
@@ -71,19 +70,23 @@ public final class RealCrash implements Thread.UncaughtExceptionHandler, ICrash 
         //Log记录
         LogFile.saveCrashLog(mContext, tw);
         if (t == Looper.getMainLooper().getThread()){
-            if (Common.FIX_MIAN_HHREAD){
+            if (Common.FIX_MIAN_KEEPLOOP){
                 //提示
                 if (keepLoop.isChoreographerException(tw)){
                     LogUtils.d(mContext.getString(R.string.carsh_canvers));
                     Utils.show(mContext,mContext.getString(R.string.carsh_canvers));
-                    canNotCatchCrash(t, tw);
+                    if (Common.VIEW_TOUCH_RUNTIOME){
+                        keepLoop.onDrawCrashKeepRun(mContext,t, tw);
+                        return true;
+                    }else{
+                        return false;
+                    }
                 }else{
                     LogUtils.d(mContext.getString(R.string.crash_tip2));
                     Utils.show(mContext,mContext.getString(R.string.crash_tip2));
                     keepLoop.keepLoop(t,mContext);
+                    return true;
                 }
-            }else{
-                canNotCatchCrash(t,tw);
             }
         }else{
             new Thread() {
@@ -96,21 +99,8 @@ public final class RealCrash implements Thread.UncaughtExceptionHandler, ICrash 
                     Looper.loop();
                 }
             }.start();
+            return true;
         }
-        return true;
+        return false;
     }
-
-    /**
-     * Uncaught Exception：restartApp and To the system default process
-     * @param thread
-     * @param throwable
-     */
-    private void canNotCatchCrash(Thread thread, Throwable throwable){
-        Utils.restarteApp(mContext);
-        if (mDefaultCaughtExceptionHandler == null){
-            mDefaultCaughtExceptionHandler = Thread.getDefaultUncaughtExceptionHandler();
-        }
-        mDefaultCaughtExceptionHandler.uncaughtException(thread, throwable);
-    }
-
 }

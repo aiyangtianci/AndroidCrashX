@@ -1,21 +1,25 @@
 package com.aiyang.android_crashx;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 
-import com.aiyang.android_crashx.CrashActivity.FourActivity;
-import com.aiyang.android_crashx.CrashActivity.SecondActivity;
-import com.aiyang.android_crashx.CrashActivity.ThreeActivity;
+import com.aiyang.android_crashx.CrashActivity.ViewDrawActivity;
+import com.aiyang.android_crashx.CrashActivity.NotFoundActivity;
+import com.aiyang.android_crashx.CrashActivity.StartLifeActivity;
 import com.aiyang.android_crashx.CrashLog.CrashLogActivity;
-import com.aiyang.crashx.CrashX;
 import com.aiyang.crashx.util.Common;
 import com.aiyang.crashx.util.Utils;
+
+import static com.aiyang.android_crashx.R.color.gray;
 
 /**
  * @author aiyang
@@ -31,11 +35,17 @@ public class MainActivity extends AppCompatActivity {
     }
 
     //CrashX:on-off
+    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     public void switchCrashX(View view) {
-        if (Common.FIX_MIAN_HHREAD){
-            Common.FIX_MIAN_HHREAD = false;
+        Button on_off = (Button)view;
+        if (Common.FIX_MIAN_KEEPLOOP){
+            Common.FIX_MIAN_KEEPLOOP = false;
+            on_off.setText("关闭-OFF");
+            on_off.setBackgroundColor(getResources().getColor(gray));
         }else{
-            Common.FIX_MIAN_HHREAD = true;
+            Common.FIX_MIAN_KEEPLOOP = true;
+            on_off.setText("已开启-On");
+            on_off.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
         }
     }
 
@@ -60,17 +70,17 @@ public class MainActivity extends AppCompatActivity {
 
     //Activity未注册
     public void clickStartActivity(View view) {
-        startActivity(new Intent(MainActivity.this, SecondActivity.class));
+        startActivity(new Intent(MainActivity.this, NotFoundActivity.class));
     }
 
     //自定义View绘制
     public void clickRuntiomeException(View view) {
-        startActivity(new Intent(MainActivity.this, FourActivity.class));
+        startActivity(new Intent(MainActivity.this, ViewDrawActivity.class));
     }
 
     //Activity生命周期方法异常
     public void clickStartActivity2(View view) {
-        startActivity(new Intent(MainActivity.this, ThreeActivity.class).putExtra("METHOD","onStart"));
+        startActivity(new Intent(MainActivity.this, StartLifeActivity.class).putExtra("METHOD","onStart"));
     }
 
     // =========================== Error  ===========================

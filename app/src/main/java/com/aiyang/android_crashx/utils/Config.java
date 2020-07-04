@@ -1,4 +1,4 @@
-package com.aiyang.android_crashx;
+package com.aiyang.android_crashx.utils;
 
 import com.aiyang.android_crashx.utils.SpUtils;
 

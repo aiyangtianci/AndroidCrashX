@@ -39,8 +39,8 @@
             <Button
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
-                android:text="开启"
-                android:layout_margin="30dp"
+                android:text="已开启-On"
+                android:layout_margin="20dp"
                 android:background="@color/colorPrimary"
                 android:textColor="@color/white"
                 android:onClick="switchCrashX" />
@@ -52,6 +52,16 @@
                 android:background="@color/gray"
                 android:textColor="@color/white"
                 android:text="——————Java 崩溃"/>
+
+            <Button
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:text="（子线程) 数组越界异常"
+                android:layout_marginTop="30dp"
+                android:background="@color/colorPrimary"
+                android:textColor="@color/white"
+                android:onClick="clickIndexOutOfBoundsException" />
+
             <Button
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
@@ -64,12 +74,11 @@
             <Button
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
-                android:text="（子线程) 数组越界异常"
+                android:text="（主线程)方法未实现异常"
                 android:layout_marginTop="30dp"
                 android:background="@color/colorPrimary"
                 android:textColor="@color/white"
-                android:onClick="clickIndexOutOfBoundsException" />
-
+                android:onClick="clicknotfindException" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -78,7 +87,7 @@
                 android:padding="10dp"
                 android:textColor="@color/white"
                 android:layout_marginTop="30dp"
-                android:text="——————Native 崩溃"/>
+                android:text="——————UI 崩溃"/>
 
 
             <Button
@@ -94,7 +103,7 @@
             <Button
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
-                android:text="（自定义）view绘制"
+                android:text="布局View绘制异常"
                 android:background="@color/colorPrimary"
                 android:textColor="@color/white"
                 android:onClick="clickRuntiomeException"
