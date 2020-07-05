@@ -1,11 +1,7 @@
 package com.aiyang.android_crashx;
 
-import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -13,15 +9,14 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
-import com.aiyang.android_crashx.CrashActivity.ViewDrawActivity;
-import com.aiyang.android_crashx.CrashActivity.NotFoundActivity;
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.aiyang.android_crashx.CrashActivity.NotFoundDetailActivity;
 import com.aiyang.android_crashx.CrashActivity.StartLifeActivity;
+import com.aiyang.android_crashx.CrashActivity.ViewDrawActivity;
 import com.aiyang.android_crashx.CrashLog.CrashLogActivity;
 import com.aiyang.crashx.util.Common;
-import com.aiyang.crashx.util.LogFile;
 import com.aiyang.crashx.util.Utils;
-
-import static com.aiyang.android_crashx.R.color.gray;
 
 /**
  * @author aiyang
@@ -95,7 +90,7 @@ public class MainActivity extends AppCompatActivity {
 
     //Activity未注册
     public void clickStartActivity(View view) {
-        startActivity(new Intent(MainActivity.this, NotFoundActivity.class));
+        startActivity(new Intent(MainActivity.this, NotFoundDetailActivity.class));
     }
 
     //自定义View绘制
@@ -143,7 +138,7 @@ public class MainActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu){
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.main, menu);
-        menu.findItem(R.id.action_log).setTitle("LogCrash记录    ");
+        menu.findItem(R.id.action_log).setTitle("LogCat 记录    ");
         return true;
     }
 }

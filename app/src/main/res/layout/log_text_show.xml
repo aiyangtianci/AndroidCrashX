@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/life_show"
+    android:padding="50dp"
+    android:text="记录📝："
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+</TextView>

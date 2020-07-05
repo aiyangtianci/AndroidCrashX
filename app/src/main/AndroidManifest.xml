@@ -20,6 +20,7 @@
 <!--        <activity android:name=".CrashActivity.SecondActivity"/>-->
         <activity android:name=".CrashActivity.StartLifeActivity"  android:launchMode="singleInstance"/>
         <activity android:name=".CrashActivity.ViewDrawActivity"/>
+        <activity android:name=".CrashActivity.NotFoundDetailActivity"/>
         <activity android:name=".CrashLog.CrashLogActivity"/>
     </application>
 

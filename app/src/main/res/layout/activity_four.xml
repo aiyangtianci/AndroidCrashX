@@ -70,14 +70,12 @@
         android:background="@drawable/background_img"
         />
 
-    <TextView
-        android:id="@+id/life_show"
+    <include
+        layout="@layout/log_text_show"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/crashviewtwo"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        android:padding="50dp"
-        android:text="记录📝："
         />
 </androidx.constraintlayout.widget.ConstraintLayout>
