@@ -57,7 +57,7 @@ public final class CrashX{
         Common.FIX_MIAN_KEEPLOOP =params.FIX_MIAN_HHREAD;
         Common.FIX_MIAN_HOOKH =params.FIX_MIAN_HOOKH;
         Common.VIEW_TOUCH_RUNTIOME =params.VIEW_TOUCH_RUNTIOME;
-
+        Common.NOT_FOUND_ACTIVITY =params.NOT_FOUND_ACTIVITY;
         //once instance，once install
         if (rCrash==null){
             rCrash = new RealCrash(ctx);
@@ -79,6 +79,17 @@ public final class CrashX{
 
         /*是否开启了拦截绘制异常，让loop持续*/
           boolean VIEW_TOUCH_RUNTIOME = true;
+
+        /*是否开启了未注册Activity异常处理*/
+         boolean NOT_FOUND_ACTIVITY= true;
+        /**
+         * 可以跳过清单验证Activity注册
+         */
+        public InitParameters setNotFoundActivity(boolean isTrue) {
+            this.NOT_FOUND_ACTIVITY = isTrue;
+            return this;
+        }
+
         /**
          * 默认是debug模式，即true开启
          * @param isTrue

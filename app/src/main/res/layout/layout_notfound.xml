@@ -21,7 +21,7 @@
 
     <Button
         android:id="@+id/activitynotfoundx"
-        android:text="启动未注册Activity"
+        android:text="未注册Activity"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:background="@color/colorPrimary"

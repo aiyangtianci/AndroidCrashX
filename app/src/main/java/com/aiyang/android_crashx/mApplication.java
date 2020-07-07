@@ -20,6 +20,7 @@ public class mApplication extends Application {
                 .setDebug(true)
                 .setFixUIThread(true)
                 .setFixActivity(true)
+                .setNotFoundActivity(true)
                 .setFixView(true));
     }
 }

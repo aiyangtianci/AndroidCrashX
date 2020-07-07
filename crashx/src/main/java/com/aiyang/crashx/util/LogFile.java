@@ -5,6 +5,8 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.os.Build;
 
+import com.aiyang.crashx.inter.ICrashLogFile;
+
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.PrintWriter;
@@ -95,8 +97,15 @@ public class LogFile {
             FileOutputStream fos = new FileOutputStream(cachePath + fileName);
             fos.write(sb.toString().getBytes());
             fos.close();
+            if (iCrashLogFileListener!=null){
+                iCrashLogFileListener.OnNewCrashListener(fileName,getModifiedTime(dir));
+            }
         } catch (Exception e) {
         }
+    }
+    private static ICrashLogFile iCrashLogFileListener;
+    public static void addCrashLogFileListener(ICrashLogFile crashLogFileListener){
+        iCrashLogFileListener = crashLogFileListener;
     }
 
     /**

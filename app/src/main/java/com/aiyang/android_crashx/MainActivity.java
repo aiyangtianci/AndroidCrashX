@@ -11,7 +11,7 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.aiyang.android_crashx.CrashActivity.NotFoundDetailActivity;
+import com.aiyang.android_crashx.CrashActivity.NotFoundShowActivity;
 import com.aiyang.android_crashx.CrashActivity.StartLifeActivity;
 import com.aiyang.android_crashx.CrashActivity.ViewDrawActivity;
 import com.aiyang.android_crashx.CrashLog.CrashLogActivity;
@@ -90,7 +90,7 @@ public class MainActivity extends AppCompatActivity {
 
     //Activity未注册
     public void clickStartActivity(View view) {
-        startActivity(new Intent(MainActivity.this, NotFoundDetailActivity.class));
+        startActivity(new Intent(MainActivity.this, NotFoundShowActivity.class));
     }
 
     //自定义View绘制

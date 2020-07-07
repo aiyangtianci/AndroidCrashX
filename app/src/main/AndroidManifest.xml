@@ -17,10 +17,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-<!--        <activity android:name=".CrashActivity.SecondActivity"/>-->
         <activity android:name=".CrashActivity.StartLifeActivity"  android:launchMode="singleInstance"/>
+
         <activity android:name=".CrashActivity.ViewDrawActivity"/>
-        <activity android:name=".CrashActivity.NotFoundDetailActivity"/>
+
+
+        <activity android:name=".CrashActivity.NotFoundShowActivity"/>
+        <!--        <activity android:name=".CrashActivity.SecondActivity"/>-->
+        <activity android:name=".CrashActivity.StubActivity" />
+
+
         <activity android:name=".CrashLog.CrashLogActivity"/>
     </application>
 
