@@ -1,6 +1,12 @@
 package com.aiyang.android_crashx.CrashActivity;
 
+import android.os.Bundle;
+import android.view.View;
+
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.aiyang.android_crashx.R;
 
 /**
  * Activity Not Found Exception
@@ -14,4 +20,14 @@ import androidx.appcompat.app.AppCompatActivity;
  * 4.想启动某个系统Activity，但是在某些定制rom上不存在这个系统Activity
  */
 public class NotFoundActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.layout_notfoundinfo);
+    }
+
+    public void goback(View view) {
+        finish();
+    }
 }
