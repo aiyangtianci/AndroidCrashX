@@ -53,15 +53,13 @@ public class mApplication extends Application {
  
 ## 已接入项目
 
-<div>
-<img src="https://img-blog.csdnimg.cn/20200417151751717.png" width="70" height="70">
+<!-- <div> <img src="https://img-blog.csdnimg.cn/20200417151751717.png" width="70" height="70"> -->
 
-<img src="https://img-blog.csdnimg.cn/20200417151751716.jpeg" width="70" height="70">
+<!-- <img src="https://img-blog.csdnimg.cn/20200417151751716.jpeg" width="70" height="70"> -->
 
-<!-- <img src="https://img-blog.csdnimg.cn/20200417151751711.png" width="70" height="70"> -->
+<!-- <img src="https://img-blog.csdnimg.cn/20200417151751711.png" width="70" height="70">  -->
 
-<img src="https://img-blog.csdnimg.cn/20200417151751727.png" width="70" height="70">
-</div>
+<!-- <img src="https://img-blog.csdnimg.cn/20200417151751727.png" width="70" height="70"></div> -->
 
 ## 欢迎加入QQ群
 <a href="https://img-blog.csdnimg.cn/20191113124915602.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2NzZG5fYWl5YW5n,size_16,color_FFFFFF,t_70">通往Android的阶梯：569614530</a> <br>
